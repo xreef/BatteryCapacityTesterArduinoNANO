@@ -8,6 +8,7 @@ Create from an idea of http://www.instructables.com/id/DIY-Arduino-Battery-Capac
 ![Schema](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/BTester_schem.png)
 
 ## Assembly list
+`
 Label	Part Type	Properties
 10K Trimmer potentiometer					TRIMPOT	package trimpot_pth_s3_lock_3386P; variant variant 2
 18650 Battery								lipo
@@ -28,9 +29,10 @@ R3	10kΩ Resistor							package THT; tolerance ±5%; resistenza 10kΩ; bands 4; 
 R4	10kΩ Resistor							package THT; tolerance ±5%; resistenza 10kΩ; bands 4; pin spacing 400 mil
 R10	10kΩ Resistor							package THT; tolerance ±5%; resistenza 10kΩ; bands 4; pin spacing 400 mil
 R11	10kΩ Resistor							package THT; tolerance ±5%; resistenza 10kΩ; bands 4; pin spacing 400 mil
-
+`
 
 ## Shopping List
+`
 Amount	Part Type								Properties
 1		TRIMPOT									package trimpot_pth_s3_lock_3386P; variant variant 2
 1		LIPO									18650 variant 
@@ -44,9 +46,10 @@ Amount	Part Type								Properties
 1		Arduino Pro Mini clone (compatible Nano)tipo Arduino Pro Mini (Clone comp Nano); variant variant 1
 1		10kΩ Resistor							Power resistor
 6		10kΩ Resistor							package THT; tolerance ±5%; resistenza 10kΩ; bands 4; pin spacing 400 mil
+`
 
 ## Realization
-
+`
 To measuring voltage we use the principle of Voltage divider
 https://en.wikipedia.org/wiki/Voltage_divider
 https://startingelectronics.org/articles/arduino/measuring-voltage-with-arduino/
@@ -61,6 +64,7 @@ vcc --> reference arduino voltage;
 The principle is that we measure the voltage afther and before the power resistor and so we can calculate millihampere that consumes the battery.
 The MOSFET is used to stard and stop battery drain from power resistor.
 I'm pretty scary, so I inserted 2 thermistors to monitorage battery and power resistor temperature.
+`
 
 ![Breadboard](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/breadboard01.jpg)
 ![lcd on discharging](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/lcdDischarging02.jpg)
