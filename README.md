@@ -1,6 +1,6 @@
 # Battery Capacity Tester Arduino NANO
-Another Battery capacity tester.
-Create from an idea of http://www.instructables.com/id/DIY-Arduino-Battery-Capacity-Tester-V10-/.
+	Another Battery capacity tester.
+	Create from an idea of http://www.instructables.com/id/DIY-Arduino-Battery-Capacity-Tester-V10-/.
 
 ## Wire schema
 
