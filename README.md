@@ -1,13 +1,13 @@
-# Battery Capacity Tester Arduino NANO
+# Battery Capacity Tester Arduino NANO #
 	Another Battery capacity tester.
 	Create from an idea of http://www.instructables.com/id/DIY-Arduino-Battery-Capacity-Tester-V10-/.
 
-## Wire schema
+## Wire schema ##
 
 ![Breadboard schema](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/BTester_bb.png)
 ![Schema](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/BTester_schem.png)
 
-## Assembly list
+## Assembly list ##
 	Label Part Type		 						Properties
 	10K Trimmer potentiometer					TRIMPOT	package trimpot_pth_s3_lock_3386P; variant variant 2
 	18650 Battery								lipo
@@ -29,7 +29,7 @@
 	R10	10kΩ Resistor							package THT; tolerance ±5%; resistenza 10kΩ; bands 4; pin spacing 400 mil
 	R11	10kΩ Resistor							package THT; tolerance ±5%; resistenza 10kΩ; bands 4; pin spacing 400 mil
 
-## Shopping List
+## Shopping List ##
 
 	Amount	Part Type								Properties
 	1		TRIMPOT									package trimpot_pth_s3_lock_3386P; variant variant 2
@@ -45,7 +45,7 @@
 	1		10kΩ Resistor							Power resistor
 	6		10kΩ Resistor							package THT; tolerance ±5%; resistenza 10kΩ; bands 4; pin spacing 400 mil
 
-## Realization
+## Realization ##
 	To measuring voltage we use the principle of Voltage divider
 	https://en.wikipedia.org/wiki/Voltage_divider
 	https://startingelectronics.org/articles/arduino/measuring-voltage-with-arduino/
