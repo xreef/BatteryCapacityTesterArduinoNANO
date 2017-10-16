@@ -53,7 +53,7 @@ https://startingelectronics.org/articles/arduino/measuring-voltage-with-arduino/
 in simple word this code 
 	batVolt = (sample1 / (1023.0 - ((batResValueGnd / (batResValueVolt + batResValueGnd)) * 1023.0))) * vcc;
 that measure battery voltage is:
-batResValueGnd / (batResValueVolt + batResValueGnd) --> this is the multipler factor of the reading votlage because I inserted 2 resistance of batResValueVolt and batResValueGnd ohom value after and before the analog read wire;
+batResValueGnd / (batResValueVolt + batResValueGnd) --> this is the multipler factor of the reading voltage because I inserted 2 resistance of batResValueVolt and batResValueGnd ohom value after and before the analog read wire;
 sample1 --> is the average analog readings;
 vcc --> reference arduino voltage;
 1023.0 --> is the reference maximun value of analog read (arduino analog read go from 0 to 1023)
