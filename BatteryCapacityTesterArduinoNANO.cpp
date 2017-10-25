@@ -5,7 +5,10 @@
 #include "Thermistor.h"
 #include <Wire.h>
 
-#define MOSFET_Pin 2
+#define CHANGE_BATTERY_BUTTON 2
+#define SELECT_BATTERY_BUTTON 3
+
+#define MOSFET_PIN 5
 #define BAT_PIN A0
 #define RES_PIN A1
 #define BATTERY_THERM_PIN A2
@@ -15,25 +18,49 @@
 #define BATTERY_MAX_TEMP 50
 #define RESISTANCE_MAX_TEMP 70
 
-float batResValueGnd = 10;
-float batResValueVolt = 10;
+float batResValueGnd = 10.0;
+float batResValueVolt = 10.0;
 
-float resResValueGnd = 10;
-float resResValueVolt = 10;
+float resResValueGnd = 10.0;
+float resResValueVolt = 10.0;
 
-float capacity = 0.0; // capacity in mAh
+float capacity = 0.0; 	// capacity in mAh
 float resValue = 10.2;  // Resistor Value in Ohm
-float vcc = 5.04; // Voltage of Arduino 5V pin ( Mesured by Multimeter )
-float tolerance = 0.1;
-float current = 0.0; // current in Amp
-float mA = 0;         // current in mA
-float batVolt = 0.0;  // Battery Voltage
+float vcc = 5.04; 		// Voltage of Arduino 5V pin ( overwritten by function )
+float tolerance = 0.2; 	// When raise first time the low voltage at next check I apply this tolerance to not restart if It's raise the value
+float current = 0.0; 	// current in Amp
+float mA = 0;         	// current in mA
+float batVolt = 0.0;  	// Battery Voltage
 float realBatVolt = 0.0;
-float resVolt = 0.0;  // Voltage at lower end of the Resistor
-float batHigh = 4.3; // Battery High Voltage
-float batLow = 2.9; // Discharge Cut Off Voltage
-unsigned long previousMillis = 0; // Previous time in ms
-unsigned long millisPassed = 0;  // current time in ms
+float resVolt = 0.0;  	// Voltage at lower end of the Resistor
+
+struct BatteryType {
+	char name[8];
+	float maxVolt;
+	float minVolt;
+};
+
+#define BATTERY_TYPE_NUMBER 3
+BatteryType batteryTipes[BATTERY_TYPE_NUMBER] = {
+		{ "18650", 4.3, 2.9 },
+		{ "17550", 4.3, 2.9 },
+		{ "14500", 4.3, 2.75 }
+};
+
+// This parameter for 18650 battery type
+float batHigh = 4.3; 	// Battery High Voltage
+float batLow = 2.9; 	// Discharge Cut Off Voltage
+
+uint8_t buttonChangeState = LOW;
+uint8_t buttonSelectState = LOW;
+
+uint8_t tmpBatterySelected = 0;
+int8_t batterySelected = -1;
+
+bool displayRefresh = false;
+
+unsigned long previousMillis = 0; 		// Previous time in ms
+unsigned long millisPassed = 0;  		// current time in ms
 unsigned long waitMillisPassed = 3000;  // current time in ms
 float sample1 = 0;
 float sample2 = 0;
@@ -49,21 +76,21 @@ LiquidCrystal_I2C lcd(0x38, 16, 2);
 Thermistor thermBattery(BATTERY_THERM_PIN);
 Thermistor thermResistance(RESISTA_THERM_PIN);
 
-byte loader[][8] = { { // 0
+byte loader[][8] = { { // 0 loader
 		B00001,
 		B00011,
 		B00110,
 		B01110,
 		B01100,
 		B11000,
-		B10000 }, { // 1
+		B10000 }, { // 1 loader
 		B00000,
 		B00000,
 		B00000,
 		B11111,
 		B00000,
 		B00000,
-		B00000 }, { // 2
+		B00000 }, { // 2 loader
 		B10000,
 		B11000,
 		B01100,
@@ -109,7 +136,7 @@ byte loader[][8] = { { // 0
 
 int prevStatus = 0;
 bool dischargingStarted = false;
-float startingVcc = 4.2;
+float startingVcc = 4.2; // Voltage at the start of discharging (overwritten at first time)
 
 uint8_t lastTempVisualizedBattery = 0;
 int loadingCursor = 0;
@@ -121,14 +148,13 @@ void draw(void);
 void beep(unsigned char delay_time);
 long readVcc(void);
 
-//The setup function is called once at startup of the sketch
 void setup() {
 	Serial.begin(115200);
 
-	pinMode(MOSFET_Pin, OUTPUT);
+	pinMode(MOSFET_PIN, OUTPUT);
 	pinMode(BUZZER_PIN, OUTPUT);
-	digitalWrite(MOSFET_Pin, LOW);  // MOSFET is off during the start
-	mosfetStatus = LOW;  // MOSFET is off during the start
+	digitalWrite(MOSFET_PIN, LOW);  // MOSFET is off during the start
+	mosfetStatus = LOW;  			// MOSFET status is off during the start
 	Serial.println("CLEARDATA");
 
 	lcd.init();
@@ -141,17 +167,18 @@ void setup() {
 	}
 
 	lcd.setBacklight(LOW);
+
+	pinMode(SELECT_BATTERY_BUTTON, INPUT);
+	pinMode(CHANGE_BATTERY_BUTTON, INPUT);
 }
 
 // The loop function is called in an endless loop
 void loop() {
-
 	vcc = readVcc() / 1000.0;
 
 	//************ Measuring Battery Voltage ***********
-
 	for (int i = 0; i < 100; i++) {
-		sample1 = sample1 + analogRead(BAT_PIN); //read the voltage from the divider circuit
+		sample1 = sample1 + analogRead((uint8_t)BAT_PIN); //read the voltage from the divider circuit
 		delay(2);
 	}
 	sample1 = sample1 / 100;
@@ -159,10 +186,10 @@ void loop() {
 			/ (1023.0
 					- ((batResValueGnd / (batResValueVolt + batResValueGnd))
 							* 1023.0))) * vcc;
-	// *********  Measuring Resistor Voltage ***********
 
+	// *********  Measuring Resistor Voltage ***********
 	for (int i = 0; i < 100; i++) {
-		sample2 = sample2 + analogRead(RES_PIN); //read the voltage from the divider circuit
+		sample2 = sample2 + analogRead((uint8_t)RES_PIN); //read the voltage from the divider circuit
 		delay(2);
 	}
 	sample2 = sample2 / 100;
@@ -173,46 +200,63 @@ void loop() {
 
 	realBatVolt = (mosfetStatus == HIGH) ? batVolt + resVolt : batVolt;
 
-	//********************* Checking the different conditions *************
-
+	// ************* Read thermistor temperature ***********************
 	batteryTemp = thermBattery.readTemperature();
 	resistanceTemp = thermResistance.readTemperature();
 
-	if (batteryTemp > BATTERY_MAX_TEMP || resistanceTemp > RESISTANCE_MAX_TEMP) {
-		digitalWrite(MOSFET_Pin, LOW); // Turned Off the MOSFET // No discharge
+	//********************* Checking the different conditions *************
+	// No battery selected
+	if (batterySelected==-1){
+		buttonChangeState = digitalRead(CHANGE_BATTERY_BUTTON);
+		if (buttonChangeState==HIGH) {
+			tmpBatterySelected++;
+			if (tmpBatterySelected>=BATTERY_TYPE_NUMBER){
+				tmpBatterySelected = 0;
+			}
+			displayRefresh = true;
+		}else{
+			displayRefresh = false;
+		}
+
+		buttonSelectState = digitalRead(SELECT_BATTERY_BUTTON);
+		if (buttonSelectState==HIGH) {
+			batterySelected = tmpBatterySelected;
+			batHigh = batteryTipes[tmpBatterySelected].maxVolt; // Battery High Voltage
+			batLow = batteryTipes[tmpBatterySelected].minVolt; // Discharge Cut Off Voltage
+		}
+		delay(10);
+	// Temperature warning
+	}else if (batteryTemp > BATTERY_MAX_TEMP || resistanceTemp > RESISTANCE_MAX_TEMP) {
+		digitalWrite(MOSFET_PIN, LOW); // Turned Off the MOSFET // No discharge
 		mosfetStatus = LOW;
 		beep(100);
 		// Reset millis
 		previousMillis = millis();
-		//	    Serial.print( "Warning High-V! ");
-		//		Serial.println( batVolt,2);  // display Battery Voltage in Volt
 		delay(1000);
+	// Voltage too hight
 	} else if (realBatVolt > batHigh) {
-		digitalWrite(MOSFET_Pin, LOW); // Turned Off the MOSFET // No discharge
+		digitalWrite(MOSFET_PIN, LOW); // Turned Off the MOSFET // No discharge
 		mosfetStatus = LOW;
 		beep(200);
-//	    Serial.print( "Warning High-V! ");
-//		Serial.println( batVolt,2);  // display Battery Voltage in Volt
 		delay(1000);
 	}
-
+	// Voltage too low
 	else if (realBatVolt < batLow) {
-		digitalWrite(MOSFET_Pin, LOW);
+		digitalWrite(MOSFET_PIN, LOW);
 		mosfetStatus = LOW;
 		beep(200);
-//	      Serial.println( "Warning Low-V! ");
 		delay(1000);
+	// Discharging ok
 	} else if (realBatVolt > batLow && realBatVolt < batHigh
 			&& (previousMillis == 0
 					|| (millis() - previousMillis) > waitMillisPassed)) { // Check if the battery voltage is within the safe limit
-		digitalWrite(MOSFET_Pin, HIGH);
+		digitalWrite(MOSFET_PIN, HIGH);
 		mosfetStatus = HIGH;
 		millisPassed = millis() - previousMillis;
 		current = (batVolt - resVolt) / resValue;
 		mA = current * 1000.0;
 		capacity = capacity + mA * (millisPassed / 3600000.0); // 1 Hour = 3600000ms
 		previousMillis = millis();
-//	      Serial.print("DATA,TIME,"); Serial.print(batVolt); Serial.print(","); Serial.println(capacity);
 		row++;
 		x++;
 
@@ -222,9 +266,35 @@ void loop() {
 	draw();
 }
 
-//************************ OLED Display Draw Function *******************************************************
+bool firstTimeRefresh = true;
+/************************ Display Draw Function *******************************************************
+ * Change this if you use a different display
+ */
+
 void draw(void) {
-	if (batteryTemp > BATTERY_MAX_TEMP || resistanceTemp > RESISTANCE_MAX_TEMP) {
+	// First time of battery selected refresh lcd
+	if (batterySelected!=-1 && prevStatus==0){
+		lcd.clear();
+	}
+
+	// If not already select a battery type
+	if (batterySelected==-1){
+		if (displayRefresh || firstTimeRefresh){
+			lcd.clear();
+
+			lcd.setCursor(0, 0);
+			lcd.print(batteryTipes[tmpBatterySelected].name);
+			lcd.setCursor(0, 1);
+			lcd.print("Volt: ");
+			lcd.print(batteryTipes[tmpBatterySelected].minVolt, 1);
+			lcd.print("V/");
+			lcd.print(batteryTipes[tmpBatterySelected].maxVolt,1 );
+			lcd.print("V");
+
+			firstTimeRefresh = false;
+		}
+	// If battery or resistance temp is out of range
+	}else if (batteryTemp > BATTERY_MAX_TEMP || resistanceTemp > RESISTANCE_MAX_TEMP) {
 		if (dischargingStarted /*prevStatus==4*/) {
 			lcd.setCursor(0, 0);
 			lcd.write(byte(loadLenght + 4));
@@ -254,6 +324,7 @@ void draw(void) {
 			lcd.write(byte(loadLenght + 3));
 			lcd.print("C");
 		}
+	// No battery
 	} else if (realBatVolt < 1) {
 		if (dischargingStarted /*prevStatus==4*/) {
 			lcd.setCursor(0, 0);
@@ -269,6 +340,7 @@ void draw(void) {
 		}
 		prevStatus = 1;
 
+	// Battery votlage is wrong, probably wrong type of battery
 	} else if (realBatVolt > batHigh) {
 		if (dischargingStarted /*prevStatus==4*/) {
 			lcd.setCursor(0, 0);
@@ -279,6 +351,9 @@ void draw(void) {
 		} else if (prevStatus != 2) {
 			lcd.setCursor(0, 0);
 			lcd.print("High-V!");
+
+			lcd.setCursor(0, 1);
+			lcd.print("Wrong battery!");
 
 			Serial.print("High-V!");
 
@@ -295,6 +370,7 @@ void draw(void) {
 
 		}
 		prevStatus = 2;
+	// Battery is discharged
 	} else if (realBatVolt < batLow) {
 		if (dischargingStarted /*prevStatus==4*/) {
 			lcd.setCursor(0, 0);
@@ -322,11 +398,14 @@ void draw(void) {
 		}
 		prevStatus = 3;
 
+	// Discharging time
 	} else if (realBatVolt >= batLow && realBatVolt < batHigh) {
+		// startingVcc used to get percentage of discharging
 		if (!dischargingStarted) {
 			startingVcc = realBatVolt;
 		}
 		dischargingStarted = true;
+		// If prevState is low voltage and voltage less the tolerance not greater than battery low voltage cycle is finished
 		if (!(prevStatus == 3 && ((realBatVolt - tolerance) < batLow))) {
 			lcd.clear();
 

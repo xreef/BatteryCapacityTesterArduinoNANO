@@ -2,12 +2,14 @@
 Another Battery capacity tester.
 With this device you can check the 18650 battery capacity. For safe I added with thermistor the temperature of power resistance and battery to prevent explosion.
 I'm doing some change from original project and now It's quite fine:
-v01
+v0.1
  - VCC of Arduino now It's automatically calculated;
  - Voltage on screen now It's correct; 
  - Added variable to change setting in more confortable way.
  - Added percentage of discharging
  - Added temperature of battery and power resistor
+v0.2
+ - Added battery selection
 
 In project you can find fritzing, schema, photo and other.
 
