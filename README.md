@@ -8,6 +8,7 @@ v0.1
  - Added variable to change setting in more confortable way.
  - Added percentage of discharging
  - Added temperature of battery and power resistor
+ 
 v0.2
  - Added possiblity of battery selection
 
