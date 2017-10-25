@@ -21,7 +21,7 @@ Created from an idea of [OpenGreenEnergy](http://www.instructables.com/id/DIY-Ar
 
 ## Wire schema ##
 
-![Breadboard schema](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/BTester_bb.png)
+![Breadboard schema](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/BTesterV02_bb.png)
 ![Schema](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/BTester_schem.png)
 
 ## Assembly list ##
