@@ -9,7 +9,7 @@ v0.1
  - Added percentage of discharging
  - Added temperature of battery and power resistor
 v0.2
- - Added battery selection
+ - Added possiblity of battery selection
 
 In project you can find fritzing, schema, photo and other.
 
