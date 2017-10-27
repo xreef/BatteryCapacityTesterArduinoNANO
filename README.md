@@ -77,7 +77,7 @@ I'm pretty scary, so I inserted 2 thermistors to monitorage battery and power re
 
 **On breadboard:**
 
-![Breadboard](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/BTesterV02_bb.jpg)
+![Breadboard](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/BTesterV02_bb.png)
 
 ![Battery selection](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/BB_Select_battery.jpg)
 
@@ -99,9 +99,9 @@ I create a prototype board very extendible, but for now I use only minimal set o
 If you want support voltage greater than 10v you must change the resistor value of Battery and Resistance in according to the formula
 `(BAT_RES_VALUE_GND / (BAT_RES_VALUE_VCC + BAT_RES_VALUE_GND)` in the schema `Resistor power voltage GND 1/2 / (Resistor power voltage 2/2 + Resistor power voltage GND 1/2)`.
 
-![Prototype](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PTesterV02_bb.jpg)
+![Prototype](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PTesterV02_bb.png)
 
-![Prototype schema](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PTesterV02_schem.jpg)
+![Prototype schema](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PTesterV02_schem.png)
 
 **Shopping List**
 
@@ -120,7 +120,7 @@ If you want support voltage greater than 10v you must change the resistor value 
 
 Soldering prototype:
 
-![Pin up](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PB_01_pin_up.jpg)
+![Pin up](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PB_02_pin_up.jpg)
 ![Pin bottom](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PB_01_pin_bottom.jpg)
 ![Pull up](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PB_03_pulldown_up.jpg)
 ![pull down](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PB_05_pulldown_connect_bottom.jpg)
@@ -139,7 +139,7 @@ Soldering prototype:
 
 ## Wire schema v0.1 ##
 
-![Breadboard schema](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v01/BTesterV02_bb.png)
+![Breadboard schema](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v01/BTester_bb.png)
 ![Schema](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v01/BTester_schem.png)
 
 ## Assembly list ##
