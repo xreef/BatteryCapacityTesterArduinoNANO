@@ -79,7 +79,7 @@ I'm pretty scary, so I inserted 2 thermistors to monitorage battery and power re
 
 ![Breadboard](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/BTesterV02_bb.png)
 
-<img alt="Battery selection" src="(https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/BB_Select_battery.jpg" width="300">
+![Battery selection](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/BB_Select_battery.jpg)
 
 **Serial output for debug:**
 
@@ -99,7 +99,7 @@ I create a prototype board very extendible, but for now I use only minimal set o
 If you want support voltage greater than 10v you must change the resistor value of Battery and Resistance in according to the formula
 `(BAT_RES_VALUE_GND / (BAT_RES_VALUE_VCC + BAT_RES_VALUE_GND)` in the schema `Resistor power voltage GND 1/2 / (Resistor power voltage 2/2 + Resistor power voltage GND 1/2)`.
 
-![Prototype](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PTesterV02_bb.png | width=200)
+![Prototype](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PTesterV02_bb.png)
 
 ![Prototype schema](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PTesterV02_schem.png)
 
@@ -120,27 +120,27 @@ If you want support voltage greater than 10v you must change the resistor value 
 
 Soldering prototype:
 
-![Pin up](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PB_02_pin_up.jpg | width=200)
-![Pin bottom](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PB_01_pin_bottom.jpg | width=200)
-![Pull up](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PB_03_pulldown_up.jpg | width=200)
-![pull down](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PB_05_pulldown_connect_bottom.jpg | width=200)
-![All up](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PB_06_allother_up.jpg | width=200)
-![All bottom](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PB_07_allother_bottom.jpg | width=200)
-![PB_TestMAHA](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PB_TestMAHA.jpg | width=200)
+![Pin up](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PB_02_pin_up.jpg)
+![Pin bottom](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PB_01_pin_bottom.jpg)
+![Pull up](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PB_03_pulldown_up.jpg)
+![pull down](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PB_05_pulldown_connect_bottom.jpg)
+![All up](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PB_06_allother_up.jpg)
+![All bottom](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PB_07_allother_bottom.jpg)
+![PB_TestMAHA](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PB_TestMAHA.jpg)
 
 **Display**
 
-![Sel battery](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/Disp_sel_battery.jpg | width=100)
-![Battery removed](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/Disp_battery_removed.jpg | width=100)
-![Resistance hot](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/Disp_Resistance_hot.jpg | width=100)
+![Sel battery](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/Disp_sel_battery.jpg)
+![Battery removed](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/Disp_battery_removed.jpg)
+![Resistance hot](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/Disp_Resistance_hot.jpg)
 
 ### Version v0.1 ###
 ---
 
 ## Wire schema v0.1 ##
 
-![Breadboard schema](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v01/BTester_bb.png | width=200)
-![Schema](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v01/BTester_schem.png | width=200)
+![Breadboard schema](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v01/BTester_bb.png)
+![Schema](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v01/BTester_schem.png)
 
 ## Assembly list ##
 | Label | Part Type | Properties |
@@ -186,13 +186,13 @@ Soldering prototype:
 
 **Breadboard**
 
-![Breadboard](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v01/breadboard01.jpg | width=200)
-![lcd on discharging](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v01/lcdDischarging02.jpg | width=200)
+![Breadboard](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v01/breadboard01.jpg)
+![lcd on discharging](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v01/lcdDischarging02.jpg)
 
 Thermistor on power resistor (heat shrink sleeve to hold).
 
-![Thermistor on power resistance](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v01/thermistorPowerResistance.jpg | width=200)
+![Thermistor on power resistance](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v01/thermistorPowerResistance.jpg)
 
 Thermistor on battery.
 
-![Thermistor on battery](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v01/thermistorBattery.jpg | width=200)
+![Thermistor on battery](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v01/thermistorBattery.jpg)
