@@ -79,7 +79,7 @@ I'm pretty scary, so I inserted 2 thermistors to monitorage battery and power re
 
 ![Breadboard](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/BTesterV02_bb.png)
 
-![Battery selection](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/BB_Select_battery.jpg | width=300)
+<img alt="Battery selection" src="(https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/BB_Select_battery.jpg" width="300">
 
 **Serial output for debug:**
 
