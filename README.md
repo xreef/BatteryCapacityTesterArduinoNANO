@@ -75,25 +75,6 @@ I'm pretty scary, so I inserted 2 thermistors to monitorage battery and power re
 ### Versione v0.2 ###
 ---
 
-**On breadboard:**
-
-![Breadboard](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/BTesterV02_bb.png)
-
-![Battery selection](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/BB_Select_battery.jpg)
-
-**Serial output for debug:**
-
-```
-Volt: 2.94V - B Volt: 2.94V - Res Volt: 0.00V - Curr: 292mA - mAh: 219.4 - DISCHARGING: 1 - Battery temp: 19.47 - Resistance temp: 32.28
-Volt: 2.94V - B Volt: 2.94V - Res Volt: 0.00V - Curr: 292mA - mAh: 219.4 - DISCHARGING: 1 - Battery temp: 19.47 - Resistance temp: 32.24
-Volt: 2.94V - B Volt: 2.94V - Res Volt: 0.00V - Curr: 292mA - mAh: 219.4 - DISCHARGING: 1 - Battery temp: 19.44 - Resistance temp: 32.28
-Volt: 2.92V - B Volt: 2.92V - Res Volt: 0.00V - Curr: 292mA - mAh: 219.7 - DISCHARGING: 1 - Battery temp: 19.49 - Resistance temp: 32.28
-Volt: 2.94V - B Volt: 2.94V - Res Volt: 0.00V - Curr: 292mA - mAh: 219.7 - DISCHARGING: 1 - Battery temp: 19.46 - Resistance temp: 32.26
-Volt: 2.94V - B Volt: 2.94V - Res Volt: 0.00V - Curr: 292mA - mAh: 219.7 - DISCHARGING: 1 - Battery temp: 19.42 - Resistance temp: 32.28
-Volt: 2.92V - B Volt: 2.92V - Res Volt: 0.00V - Curr: 292mA - mAh: 219.7 - DISCHARGING: 1 - Battery temp: 19.46 - Resistance temp: 32.22
-Volt: 2.94V - B Volt: 2.94V - Res Volt: 0.00V - Curr: 294mA - mAh: 220.0 - DISCHARGING: 1 - Battery temp: 19.46 - Resistance temp: 32.26
-```
-
 **On prototype board:**
 I create a prototype board very extendible, but for now I use only minimal set of pin (in future led and other button).
 If you want support voltage greater than 10v you must change the resistor value of Battery and Resistance in according to the formula
@@ -135,6 +116,27 @@ Soldering prototype:
 ![Sel battery](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/Disp_sel_battery.jpg)
 ![Battery removed](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/Disp_battery_removed.jpg)
 ![Resistance hot](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/Disp_Resistance_hot.jpg)
+
+
+**On breadboard:**
+
+![Breadboard](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/BTesterV02_bb.png)
+
+![Battery selection](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/BB_Select_battery.jpg)
+
+**Serial output for debug:**
+
+```
+Volt: 2.94V - B Volt: 2.94V - Res Volt: 0.00V - Curr: 292mA - mAh: 219.4 - DISCHARGING: 1 - Battery temp: 19.47 - Resistance temp: 32.28
+Volt: 2.94V - B Volt: 2.94V - Res Volt: 0.00V - Curr: 292mA - mAh: 219.4 - DISCHARGING: 1 - Battery temp: 19.47 - Resistance temp: 32.24
+Volt: 2.94V - B Volt: 2.94V - Res Volt: 0.00V - Curr: 292mA - mAh: 219.4 - DISCHARGING: 1 - Battery temp: 19.44 - Resistance temp: 32.28
+Volt: 2.92V - B Volt: 2.92V - Res Volt: 0.00V - Curr: 292mA - mAh: 219.7 - DISCHARGING: 1 - Battery temp: 19.49 - Resistance temp: 32.28
+Volt: 2.94V - B Volt: 2.94V - Res Volt: 0.00V - Curr: 292mA - mAh: 219.7 - DISCHARGING: 1 - Battery temp: 19.46 - Resistance temp: 32.26
+Volt: 2.94V - B Volt: 2.94V - Res Volt: 0.00V - Curr: 292mA - mAh: 219.7 - DISCHARGING: 1 - Battery temp: 19.42 - Resistance temp: 32.28
+Volt: 2.92V - B Volt: 2.92V - Res Volt: 0.00V - Curr: 292mA - mAh: 219.7 - DISCHARGING: 1 - Battery temp: 19.46 - Resistance temp: 32.22
+Volt: 2.94V - B Volt: 2.94V - Res Volt: 0.00V - Curr: 294mA - mAh: 220.0 - DISCHARGING: 1 - Battery temp: 19.46 - Resistance temp: 32.26
+```
+
 
 ### Version v0.1 ###
 ---
