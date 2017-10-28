@@ -103,6 +103,8 @@ If you want support voltage greater than 10v you must change the resistor value 
 
 ![Prototype schema](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PTesterV02_schem.png)
 
+![Prototype real](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PB_07_all.png)
+
 **Shopping List**
 
 | Amount | Part Type | Properties |
