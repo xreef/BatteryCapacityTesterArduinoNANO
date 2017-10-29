@@ -257,7 +257,7 @@ void loop() {
 		digitalWrite(MOSFET_PIN, LOW); // Turned Off the MOSFET // No discharge
 		mosfetStatus = LOW;
 		beep(100);
-		delay(2000);
+		delay(10000);
 
 		// Reset millis
 		previousMillis = millis();
