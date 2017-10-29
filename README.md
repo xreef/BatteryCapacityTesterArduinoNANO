@@ -114,6 +114,7 @@ Soldering prototype:
 **Display**
 
 ![Sel battery](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/Disp_sel_battery.jpg)
+![Discharging](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/Disp_discharging.jpg)
 ![Battery removed](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/Disp_battery_removed.jpg)
 ![Resistance hot](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/Disp_Resistance_hot.jpg)
 
