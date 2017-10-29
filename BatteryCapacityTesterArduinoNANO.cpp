@@ -16,7 +16,7 @@
 #define BUZZER_PIN 9
 
 #define BATTERY_MAX_TEMP 50
-#define RESISTANCE_MAX_TEMP 70
+#define RESISTANCE_MAX_TEMP 68 // 70° on datasheet
 
 // Battery voltage resistance
 #define BAT_RES_VALUE_GND 10.0
