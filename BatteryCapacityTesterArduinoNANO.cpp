@@ -16,7 +16,7 @@
 #define BUZZER_PIN 9
 
 #define BATTERY_MAX_TEMP 50
-#define RESISTANCE_MAX_TEMP 70
+#define RESISTANCE_MAX_TEMP 60
 
 // Battery voltage resistance
 #define BAT_RES_VALUE_GND 10.0
@@ -63,7 +63,7 @@ BatteryType batteryTipes[BATTERY_TYPE_NUMBER] = {
 		{ "18650", 4.3, 2.9 },
 		{ "17550", 4.3, 2.9 },
 		{ "14500", 4.3, 2.75 },
-		{ "6v Acid", 7.2, 5.8  }
+		{ "6v Acid", 6.50, 5.91  }
 };
 
 // Variable to use in discharging time
