@@ -16,7 +16,8 @@
 #define BUZZER_PIN 9
 
 #define BATTERY_MAX_TEMP 50
-#define RESISTANCE_MAX_TEMP 70 // 70° on datasheet
+#define RESISTANCE_MAX_TEMP 69 // 70° on datasheet (Derating resistors)
+#define TEMP_TO_REMOVE_ON_MAX_TEMP 20
 
 // Battery voltage resistance
 #define BAT_RES_VALUE_GND 10.0
@@ -164,6 +165,9 @@ int loadingCursor = 0;
 float batteryTemp = NAN;
 float resistanceTemp = NAN;
 
+bool batteryMaxTempRaised = false;
+bool resistorMaxTempRaised = false;
+
 void draw(void);
 void beep(unsigned char delay_time);
 long readVcc(void);
@@ -253,11 +257,29 @@ void loop() {
 		// Reset millis
 		previousMillis = millis();
 	// Temperature warning
-	}else if ((USING_BATTERY_TERMISTOR && batteryTemp > BATTERY_MAX_TEMP) || (USING_RESISTO_TERMISTOR && resistanceTemp > RESISTANCE_MAX_TEMP)) {
+	}else if (
+			(USING_BATTERY_TERMISTOR &&
+					(
+							batteryTemp > BATTERY_MAX_TEMP
+							|| (batteryMaxTempRaised && batteryTemp > (BATTERY_MAX_TEMP-TEMP_TO_REMOVE_ON_MAX_TEMP))
+					)
+			)
+			|| (USING_RESISTO_TERMISTOR &&
+					(
+							resistanceTemp > RESISTANCE_MAX_TEMP
+							|| (resistorMaxTempRaised && resistanceTemp > (RESISTANCE_MAX_TEMP-TEMP_TO_REMOVE_ON_MAX_TEMP))
+					)
+				)
+			) {
+		if (batteryTemp > BATTERY_MAX_TEMP) batteryMaxTempRaised = true;
+		if (resistanceTemp > RESISTANCE_MAX_TEMP) resistorMaxTempRaised = true;
+
 		digitalWrite(MOSFET_PIN, LOW); // Turned Off the MOSFET // No discharge
 		mosfetStatus = LOW;
+		beep(50);
 		beep(100);
-		delay(10000);
+		beep(200);
+		delay(5000);
 
 		// Reset millis
 		previousMillis = millis();
@@ -277,10 +299,18 @@ void loop() {
 		beep(200);
 		delay(1000);
 
+		// Reset max battery voltage
+		batteryMaxTempRaised = false;
+		resistorMaxTempRaised = false;
+
 		// Reset millis
 		previousMillis = millis();
 	// Voltage too low
 	} else if (realBatVolt < batLow || lowRaised>NUMBER_OF_LOW_TO_RAISE) {
+		// Reset max battery voltage
+		batteryMaxTempRaised = false;
+		resistorMaxTempRaised = false;
+
 		// Now discharging is considered started when al least wone time is calculated maha
 		// So need to check mosfet status if some people attach discharged battery to device
 		if (dischargingStarted || mosfetStatus==HIGH) {
@@ -296,6 +326,10 @@ void loop() {
 	} else if (realBatVolt > batLow && realBatVolt < batHigh
 			&& (previousMillis == 0
 					|| (millis() - previousMillis) > waitMillisPassed)) { // Check if the battery voltage is within the safe limit
+		// Reset max battery voltage
+		batteryMaxTempRaised = false;
+		resistorMaxTempRaised = false;
+
 		// startingVcc used to get percentage of discharging
 		if (!dischargingStarted && mosfetStatus == HIGH) {
 			startingVcc = realBatVolt;
@@ -352,7 +386,22 @@ void draw(void) {
 			firstTimeRefresh = false;
 		}
 	// If battery or resistance temp is out of range
-	}else if (batteryTemp > BATTERY_MAX_TEMP || resistanceTemp > RESISTANCE_MAX_TEMP) {
+//	}else if (batteryTemp > BATTERY_MAX_TEMP || resistanceTemp > RESISTANCE_MAX_TEMP) {
+	}else if (
+			(USING_BATTERY_TERMISTOR &&
+					(
+							batteryTemp > BATTERY_MAX_TEMP
+							|| (batteryMaxTempRaised && batteryTemp > (BATTERY_MAX_TEMP-TEMP_TO_REMOVE_ON_MAX_TEMP))
+					)
+			)
+			|| (USING_RESISTO_TERMISTOR &&
+					(
+							resistanceTemp > RESISTANCE_MAX_TEMP
+							|| (resistorMaxTempRaised && resistanceTemp > (RESISTANCE_MAX_TEMP-TEMP_TO_REMOVE_ON_MAX_TEMP))
+					)
+				)
+			) {
+
 		if (dischargingStarted /*prevStatus==4*/) {
 			lcd.setCursor(0, 0);
 			lcd.write(byte(loadLenght + 4));
@@ -360,8 +409,20 @@ void draw(void) {
 			lcd.setCursor(2, 0);
 			if (batteryTemp > BATTERY_MAX_TEMP) {
 				lcd.print("BHOT");
+
+				lcd.setCursor(11, 1);
+				lcd.print(" B");
+
+				lcd.print(batteryTemp, 0);  // Battery Temp in °C
+				lcd.write(byte(loadLenght + 3));
 			} else {
 				lcd.print("RHOT");
+
+				lcd.setCursor(11, 1);
+				lcd.print(" R");
+
+				lcd.print(resistanceTemp, 0);  // Resitor Temp in °C
+				lcd.write(byte(loadLenght + 3));
 			}
 		} else if (prevStatus != 1) {
 			Serial.print("Battery temp: ");
