@@ -11,6 +11,7 @@ v0.1
 v0.2
  - Added possiblity of battery selection
  - Created prototype board (Look the schema), screen, button and speaker is out of board because in the future I'd like to create a package. 
+  - Added manage of temperature limit for power resistor.to block when raise 70°.
 
 In v0.2 to support various type of battery I created a struct that must be filled with battery name, min voltage, e max voltage *(I need help to fill :P)*.
 ```cpp
