@@ -52,6 +52,11 @@
 			<location>C:/Users/renzo/OneDrive/Documenti/Arduino/libraries/Thermistor_library</location>
 		</link>
 		<link>
+			<name>libraries/U8glib</name>
+			<type>2</type>
+			<locationURI>ECLIPSE_HOME/arduinoPlugin/libraries/U8glib/1.19.1</locationURI>
+		</link>
+		<link>
 			<name>libraries/Wire</name>
 			<type>2</type>
 			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.6.20/libraries/Wire</locationURI>
