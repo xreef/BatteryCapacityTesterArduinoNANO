@@ -1,4 +1,13 @@
 # Battery Capacity Tester Arduino NANO compatible #
+
+Learn how to check battery capacity with Arduino, including essential techniques for temperature monitoring and selecting the right battery type, in my detailed article:
+
+[![Checking Battery Capacity with Arduino: Temperature Monitoring and Type Selection](Arduino-battery-checker-with-temperature-and-battery-selection-1024x552.jpg)](https://mischianti.org/checking-battery-capacity-with-arduino-temperature-monitoring-and-type-selection/)
+
+[Link to the article](https://mischianti.org/checking-battery-capacity-with-arduino-temperature-monitoring-and-type-selection/)
+
+This guide is a valuable resource for anyone interested in Arduino-based battery management and monitoring systems.
+
 Battery capacity tester.
 With this device you can check the 18650 battery capacity. For safe I added with thermistor the temperature of power resistance and battery to prevent explosion.
 I'm doing some change from original project:
