@@ -113,10 +113,13 @@ If you want support voltage greater than 10v you must change the resistor value 
 
 Soldering prototype:
 
-![Pin up](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PB_02_pin_up.jpg)
-![Pin bottom](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PB_01_pin_bottom.jpg)
-![Pull up](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PB_03_pulldown_up.jpg)
-![pull down](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PB_05_pulldown_connect_bottom.jpg)
+[//]: # (![Pin up]&#40;https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PB_02_pin_up.jpg&#41;)
+
+[//]: # (![Pin bottom]&#40;https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PB_01_pin_bottom.jpg&#41;)
+
+[//]: # (![Pull up]&#40;https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PB_03_pulldown_up.jpg&#41;)
+
+[//]: # (![pull down]&#40;https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PB_05_pulldown_connect_bottom.jpg&#41;)
 ![All up](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PB_06_allother_up.jpg)
 ![All bottom](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PB_07_allother_bottom.jpg)
 ![PB_TestMAHA](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/PB_TestMAHA.jpg)
@@ -131,7 +134,7 @@ Soldering prototype:
 
 **On breadboard:**
 
-![Breadboard](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/BTesterV02_bb.png)
+[//]: # (![Breadboard]&#40;https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/BTesterV02_bb.png&#41;)
 
 ![Battery selection](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v02/BB_Select_battery.jpg)
 
@@ -149,13 +152,16 @@ Volt: 2.94V - B Volt: 2.94V - Res Volt: 0.00V - Curr: 294mA - mAh: 220.0 - DISCH
 ```
 
 
-### Version v0.1 ###
----
+[//]: # (### Version v0.1 ###)
 
-## Wire schema v0.1 ##
+[//]: # (---)
 
-![Breadboard schema](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v01/BTester_bb.png)
-![Schema](https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v01/BTester_schem.png)
+[//]: # ()
+[//]: # (## Wire schema v0.1 ##)
+
+[//]: # (![Breadboard schema]&#40;https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v01/BTester_bb.png&#41;)
+
+[//]: # (![Schema]&#40;https://github.com/xreef/BatteryCapacityTesterArduinoNANO/blob/master/Resources/v01/BTester_schem.png&#41;)
 
 ## Assembly list ##
 | Label | Part Type | Properties |
