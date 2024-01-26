@@ -2,7 +2,7 @@
 
 Learn how to check battery capacity with Arduino, including essential techniques for temperature monitoring and selecting the right battery type, in my detailed article:
 
-[![Checking Battery Capacity with Arduino: Temperature Monitoring and Type Selection](Arduino-battery-checker-with-temperature-and-battery-selection-1024x552.jpg)](https://mischianti.org/checking-battery-capacity-with-arduino-temperature-monitoring-and-type-selection/)
+[![Checking Battery Capacity with Arduino: Temperature Monitoring and Type Selection](https://mischianti.org/wp-content/uploads/2023/11/Arduino-battery-checker-with-temperature-and-battery-selection-1024x552.jpg)](https://mischianti.org/checking-battery-capacity-with-arduino-temperature-monitoring-and-type-selection/)
 
 [Link to the article](https://mischianti.org/checking-battery-capacity-with-arduino-temperature-monitoring-and-type-selection/)
 
